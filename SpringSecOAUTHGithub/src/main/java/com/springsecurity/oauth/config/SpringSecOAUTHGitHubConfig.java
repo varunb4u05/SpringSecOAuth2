@@ -16,17 +16,12 @@ public class SpringSecOAUTHGitHubConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-				.antMatcher("/**").authorizeRequests()
+
+		http.authorizeRequests()
 				.antMatchers(new String[] {"/", "/not-restricted"}).permitAll()
 				.anyRequest().authenticated()
 				.and()
-				.oauth2Client();
-		
-		/*
-		 * http.authorizeRequests().anyRequest() .authenticated().and().oauth2Client();
-		 */		
-		//super.configure(http);
+				.oauth2Login();
 	}
 	
 	
